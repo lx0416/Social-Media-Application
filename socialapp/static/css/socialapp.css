@@ -1,0 +1,47 @@
+    body {
+        font-family: sans-serif;
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .nav_link {
+        color: white;
+    }
+    
+    .navbar {
+        padding: 0px;
+    }
+    
+    .content {
+        padding-left: 10px;
+        float: left;
+    }
+    
+    #application_title {
+        display: inline;
+        vertical-align: middle;
+    }
+    
+    #logo {
+        height: 50px;
+        width: 50px;
+        vertical-align: middle;
+    }
+    
+    #header {
+        width: 100%;
+        background-color: #FFDB58;
+        vertical-align: middle;
+    }
+    
+    #navigation {
+        width: 100%;
+        background-color: #3a3b3c;
+        color: #ffffff;
+        padding: 2px;
+    }
