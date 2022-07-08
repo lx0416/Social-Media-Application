@@ -1,0 +1,37 @@
+{% extends "./base.html" %} {% block content %}
+<div class="container">
+    {% if user.is_authenticated %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <h3>Add Status</h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form method="POST">
+                {% csrf_token %} {{ form }}
+                <input type="submit" value="Post">
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <h3>Public Status</h3>
+        </div>
+    </div>
+    {% endif %} 
+    {% for post in post_list %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <p>
+                <a style="text-decoration: none" class="text-primary" href="../profile/{{post.author.profile.pk}}"><strong>@{{ post.author }}</strong>
+                </a> {{ post.datetime }}
+            </p>
+            <p>{{ post.content }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

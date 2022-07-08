@@ -1,0 +1,23 @@
+{% extends "./base.html" %} {% load bootstrap4 %} {% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 col-sm-6">
+            <a href="/" class="btn btn-light">Back to Public Status Updates</a>
+        </div>
+    </div>
+
+    {% for profile in profile_list %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <p>
+                <a style="text-decoration: none;" class="text-primary" href="/profile/{{profile.pk}}">@{{ profile.user }}</a>
+            </p>
+            {% if profile.bio %}
+            <p>Bio: {{ profile.bio }}</p>
+            {% endif %}
+            <p>Friends: {{ profile.friends.all.count }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

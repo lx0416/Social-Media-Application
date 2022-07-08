@@ -1,0 +1,54 @@
+<style>
+    #header {
+        width: 100%;
+        background-color: #FFDB58;
+        vertical-align: middle;
+    }
+    
+    #navigation {
+        width: 100%;
+        background-color: #3a3b3c;
+        color: #ffffff;
+        padding: 2px;
+    }
+    
+    #logo {
+        height: 50px;
+        width: 50px;
+        vertical-align: middle;
+    }
+    
+    #application_title {
+        display: inline;
+        vertical-align: middle;
+    }
+</style>
+
+<nav class="navbar navbar-expand-md sticky-top flex-column bg-dark navbar-dark">
+    <div class="w-100 d-flex">
+        <div class="navbar-header" id="header">
+            <img id="logo" src="https://static01.nyt.com/images/2021/09/30/fashion/29melting-face-emoji/29melting-face-emoji-mediumSquareAt3X-v2.jpg" alt="app logo" width="50px" height="50px">
+            <h1 id="application_title">Social Media Application</h1>
+        </div>
+    </div>
+    <div class="w-100 d-flex">
+        <ul class="navbar-nav mr-auto" id="navigation">
+            <li class="nav-item"><a class="nav-link" href="/"> Public Status Updates <span class="sr-only">(current)</span></a></li>
+            {% if user.is_authenticated %}
+            <!-- <li class="nav-item"><a class="nav-link" href="#"> Hello {{ user.username }} <span class="sr-only">(current)</span></a></li> -->
+            <li class="nav-item"><a class="nav-link" href="/profile/{{request.user.profile.pk}}"> Home <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout/"> Logout<span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/index/"> Chat <span class="sr-only">(current)</span></a></li>
+            <form class="float: right;" method="GET" action="/search">
+                <div class="float: right;">
+                    <input type="text" class="form-control" placeholder="Search user" aria.describedby="basic-addon1" name="query" value="{{request.GET.query}}">
+                    <input type="submit" hidden>
+                </div>
+            </form>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="/register/"> Register <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/login/"> Log In <span class="sr-only">(current)</span></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
